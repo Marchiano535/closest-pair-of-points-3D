@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closest Pair of Points in 3D</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Closest Pair of Points in 3D</h1>
+        <form method="POST">
+            <label for="points">Points (in format [(x1, y1, z1), (x2, y2, z2), ...]):</label>
+            <input type="text" id="points" name="points" required>
+            <label for="algorithm">Algorithm:</label>
+            <select id="algorithm" name="algorithm">
+                <option value="bruteforce">Brute Force</option>
+                <option value="divide_and_conquer">Divide and Conquer</option>
+                <option value="genetic">Genetic Algorithm</option>
+            </select>
+            <button type="submit">Find Closest Pair</button>
+        </form>
+        {% if error_message %}
+        <div class="error">{{ error_message }}</div>
+        {% endif %}
+        {% if result %}
+        <h2>Result</h2>
+        <p>Closest Pair: {{ result[0] }}</p>
+        <p>Distance: {{ result[1] }}</p>
+        <p>Execution Time: {{ result[2] }} seconds</p>
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Plot">
+        {% endif %}
+    </div>
+</body>
+</html>
